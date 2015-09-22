@@ -1,0 +1,16 @@
+<ion-view>
+    <ion-nav-buttons side="left">
+        <button ng-click="$root.goBack()"
+                class=" button-icon button-clear nav-left-button ion-android-arrow-back"></button>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="view-title">Setting</div>
+    </ion-nav-title>
+    <ion-content>
+        <div ng-controller="LogoutCtrl">
+            <button class="button button-assertive button-block" ng-click="tryLogout()">
+                logout
+            </button>
+        </div>
+    </ion-content>
+</ion-view>
