@@ -46,21 +46,21 @@ angular.module('starter.controllers',[])
 })
 .controller('LogoutCtrl',function($scope,$rootScope,$ionicActionSheet,$cordovaOauth,clientId, clientSecret,twitterKey,$twitterApi){
         $rootScope.$watch('action',function(data){
-        if(data === false ){
-            if ($rootScope.myToken === '' || $rootScope.myToken === null) {
-                $cordovaOauth.twitter(clientId, clientSecret).then(function (succ) {
-                    $rootScope.myToken = succ;
+            if(data === false ){
+                if ($rootScope.myToken === '' || $rootScope.myToken === null) {
+                    $cordovaOauth.twitter(clientId, clientSecret).then(function (succ) {
+                        $rootScope.myToken = succ;
+                        $twitterApi.configure(clientId, clientSecret, $rootScope.myToken);
+                        $rootScope.action = true;
+                    }, function(error) {
+                        console.log(error);
+                    });
+                } else {
                     $twitterApi.configure(clientId, clientSecret, $rootScope.myToken);
                     $rootScope.action = true;
-                }, function(error) {
-                    console.log(error);
-                });
-            } else {
-                $twitterApi.configure(clientId, clientSecret, $rootScope.myToken);
-                $rootScope.action = true;
-            };
-        }
-    });
+                };
+            }
+        });
 
     $scope.tryLogout = function(){
         var destructiveText = 'Logout', cancelText = 'Cancel';

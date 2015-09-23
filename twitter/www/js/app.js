@@ -21,17 +21,34 @@ angular.module('starter', ['starter.controllers','starter.services','ionic', 'ng
       $rootScope.action = false ;
 
       //$rootScope.myToken = JSON.parse(window.localStorage.getItem(twitterKey));
-      if ($rootScope.myToken === '' || $rootScope.myToken === null) {
-        $cordovaOauth.twitter(clientId, clientSecret).then(function (succ) {
-          $rootScope.myToken = succ;
+      //if ($rootScope.myToken === '' || $rootScope.myToken === null) {
+      //  $cordovaOauth.twitter(clientId, clientSecret).then(function (succ) {
+      //    $rootScope.myToken = succ;
+      //    $twitterApi.configure(clientId, clientSecret, $rootScope.myToken);
+      //    $rootScope.action = true;
+      //  }, function(error) {
+      //    console.log(error);
+      //  });
+      //} else {
+      //  $twitterApi.configure(clientId, clientSecret, $rootScope.myToken);
+      //  $rootScope.action = true;
+      //}
+    });
+
+    $rootScope.$watch('action',function(data){
+      if(data === false ){
+        if ($rootScope.myToken === '' || $rootScope.myToken === null) {
+          $cordovaOauth.twitter(clientId, clientSecret).then(function (succ) {
+            $rootScope.myToken = succ;
+            $twitterApi.configure(clientId, clientSecret, $rootScope.myToken);
+            $rootScope.action = true;
+          }, function(error) {
+            console.log(error);
+          });
+        } else {
           $twitterApi.configure(clientId, clientSecret, $rootScope.myToken);
           $rootScope.action = true;
-        }, function(error) {
-          console.log(error);
-        });
-      } else {
-        $twitterApi.configure(clientId, clientSecret, $rootScope.myToken);
-        $rootScope.action = true;
+        };
       }
     });
   })
