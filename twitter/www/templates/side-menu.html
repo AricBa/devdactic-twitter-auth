@@ -1,7 +1,10 @@
 <ion-side-menu side="left">
     <ion-header-bar class="bar side-menu-bar-header bar-dark">
         <div menu-close>
-            Left menu
+            <img ng-src="{{user[0].user.profile_image_url}}"/>
+        </div>
+        <div>
+            &nbsp;&nbsp;&nbsp;{{user[0].user.name}}
         </div>
     </ion-header-bar>
     <ion-content had-header="true" class="side-menu-has-header">

@@ -14,6 +14,9 @@ angular.module('starter.controllers',[])
         Tweets.showHomeTimeline().then(function(data){
             $scope.home_timeline = data;
         });
+        Tweets.getUserTimeline().then(function(data){
+          $rootScope.user = data;
+        });
     });
 
     $scope.tweet = {};
@@ -41,8 +44,7 @@ angular.module('starter.controllers',[])
         });
     };
 })
-.controller('settingCtrl',function($scope){
-
+.controller('settingCtrl',function($scope,Tweets,$rootScope){
 })
 .controller('LogoutCtrl',function($scope,$rootScope,$ionicActionSheet,$cordovaOauth,clientId, clientSecret,twitterKey,$twitterApi){
         $rootScope.$watch('action',function(data){
