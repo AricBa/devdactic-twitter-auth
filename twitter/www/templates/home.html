@@ -1,19 +1,19 @@
 <ion-view>
+    <ion-nav-title >
+        <h1 class="title">My Twitter Feed</h1>
+    </ion-nav-title>
     <ion-nav-bar class="bar-positive nav-title-slide-ios7" align-title="left">
         <ion-nav-buttons side="left">&nbsp;&nbsp;&nbsp;
             <button class=" button-icon button-clear nav-left-button ion-navicon "
                     ng-click="openMenu()"></button>
         </ion-nav-buttons>
-        <ion-header-bar class="bar-positive">
-            <h1 class="title">My Twitter Feed</h1>
-        </ion-header-bar>
     </ion-nav-bar>
     <ion-content class="has-header padding">
         <div class="list">
 
             <div class="item item-input-inset">
                 <label class="item-input-wrapper">
-                    <input type="text" placeholder="My tweet..." ng-model="tweet.message" ng-maxlength="140">
+                    <input type="text" placeholder="What's happening?" ng-model="tweet.message" ng-maxlength="140">
                 </label>
                 <button class="button button-small" ng-click="submitTweet(tweet.message)">
                     Tweet

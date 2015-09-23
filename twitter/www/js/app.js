@@ -18,18 +18,20 @@ angular.module('starter', ['starter.controllers','starter.services','ionic', 'ng
       }
 
       $rootScope.myToken = '';
+      $rootScope.action = false ;
 
-      $rootScope.myToken = JSON.parse(window.localStorage.getItem(twitterKey));
+      //$rootScope.myToken = JSON.parse(window.localStorage.getItem(twitterKey));
       if ($rootScope.myToken === '' || $rootScope.myToken === null) {
         $cordovaOauth.twitter(clientId, clientSecret).then(function (succ) {
           $rootScope.myToken = succ;
-          window.localStorage.setItem(twitterKey, JSON.stringify(succ));
           $twitterApi.configure(clientId, clientSecret, $rootScope.myToken);
+          $rootScope.action = true;
         }, function(error) {
           console.log(error);
         });
       } else {
         $twitterApi.configure(clientId, clientSecret, $rootScope.myToken);
+        $rootScope.action = true;
       }
     });
   })
@@ -42,7 +44,7 @@ angular.module('starter', ['starter.controllers','starter.services','ionic', 'ng
       };
 
       $rootScope.$on('$stateChangeSuccess', function () {
-        if ($state.$current == 'home' || $state.$current == 'setting') {
+        if ($state.$current === 'home' || $state.$current === 'setting') {
           $rootScope.showCustomBack = false;
         } else {
           $rootScope.showCustomBack = true;
