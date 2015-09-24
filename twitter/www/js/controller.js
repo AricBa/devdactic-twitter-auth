@@ -13,6 +13,7 @@ angular.module('starter.controllers',[])
         }
         Tweets.showHomeTimeline().then(function(data){
             $scope.home_timeline = data;
+            alert(data.length);
         });
         Tweets.getUserTimeline().then(function(data){
           $rootScope.user = data;
@@ -43,6 +44,10 @@ angular.module('starter.controllers',[])
             });
         });
     };
+
+    $scope.loadMore = function(){
+
+    }
 })
 .controller('settingCtrl',function($scope,$rootScope){
         $scope.loadImage = {text:"Load image only wifi", checked:true};
