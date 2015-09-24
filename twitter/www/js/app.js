@@ -22,8 +22,6 @@ angular.module('starter', ['starter.controllers','starter.services','ionic', 'ng
 
     });
 
-      $rootScope.loadImage = {text:"Load image only wifi", checked:true};
-
       $rootScope.$watch('action',function(data){
       if(data === false ){
         if ($rootScope.myToken === '' || $rootScope.myToken === null) {

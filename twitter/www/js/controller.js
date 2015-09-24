@@ -3,7 +3,6 @@
  */
 angular.module('starter.controllers',[])
 .controller('homeCtrl', function($scope, $ionicPlatform, $twitterApi, $cordovaOauth, $ionicSideMenuDelegate,Tweets,$rootScope) {
-
     $scope.openMenu = function () {
         $ionicSideMenuDelegate.toggleLeft();
     };
@@ -46,6 +45,7 @@ angular.module('starter.controllers',[])
     };
 })
 .controller('settingCtrl',function($scope,$rootScope){
+        $scope.loadImage = {text:"Load image only wifi", checked:true};
     })
 .controller('LogoutCtrl',function($scope,$rootScope,$ionicActionSheet,$cordovaOauth,clientId, clientSecret,twitterKey,$twitterApi){
         $rootScope.$watch('action',function(data){
