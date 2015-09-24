@@ -34,7 +34,7 @@
 
             <div class="item item-body">
                 <p ng-bind-html="entry.text"></p>
-                <img ng-if="entry.extended_entities" ng-src="{{ entry.extended_entities.media[0].media_url }}" style="width: 100%;"/>
+                <img ng-if="entry.extended_entities" ng-src="{{ entry.extended_entities.media[0].media_url }}" style="width: 100%;" ng-show="show"/>
             </div>
 
         </div>

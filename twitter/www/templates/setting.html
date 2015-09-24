@@ -7,14 +7,16 @@
         <div class="view-title">Setting</div>
     </ion-nav-title>
     <ion-content>
-        <ion-list>
-            <ion-item>
-                <div ng-controller="LogoutCtrl">
-                    <button class="button button-assertive button-block" ng-click="tryLogout()">
-                        logout
-                    </button>
-                </div>
-            </ion-item>
-        </ion-list>
+        <ion-toggle ng-model="loadImage.checked"
+                    ng-checked="loadImage.checked">
+            {{ loadImage.text }}
+        </ion-toggle>
+        <ion-item>
+            <div ng-controller="LogoutCtrl">
+                <button class="button button-assertive button-block" ng-click="tryLogout()">
+                    logout
+                </button>
+            </div>
+        </ion-item>
     </ion-content>
 </ion-view>

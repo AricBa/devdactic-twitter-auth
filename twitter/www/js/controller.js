@@ -3,6 +3,7 @@
  */
 angular.module('starter.controllers',[])
 .controller('homeCtrl', function($scope, $ionicPlatform, $twitterApi, $cordovaOauth, $ionicSideMenuDelegate,Tweets,$rootScope) {
+
     $scope.openMenu = function () {
         $ionicSideMenuDelegate.toggleLeft();
     };
@@ -44,8 +45,8 @@ angular.module('starter.controllers',[])
         });
     };
 })
-.controller('settingCtrl',function($scope,Tweets,$rootScope){
-})
+.controller('settingCtrl',function($scope,$rootScope){
+    })
 .controller('LogoutCtrl',function($scope,$rootScope,$ionicActionSheet,$cordovaOauth,clientId, clientSecret,twitterKey,$twitterApi){
         $rootScope.$watch('action',function(data){
             if(data === false ){
