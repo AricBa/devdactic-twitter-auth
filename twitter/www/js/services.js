@@ -7,8 +7,8 @@ angular.module('starter.services',[])
 
     var Tweets = {
       // Load your home timeline
-      showHomeTimeline : function() {
-        return $twitterApi.getHomeTimeline();
+      showHomeTimeline : function(param) {
+        return $twitterApi.getHomeTimeline(param);
       },
 
       // Post a tweet

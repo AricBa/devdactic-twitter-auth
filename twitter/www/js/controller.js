@@ -11,7 +11,7 @@ angular.module('starter.controllers',[])
         if (data !== true) {
             return
         }
-        Tweets.showHomeTimeline().then(function(data){
+        Tweets.showHomeTimeline(param).then(function(data){
             $scope.home_timeline = data;
             alert(data.length);
         });
@@ -29,7 +29,7 @@ angular.module('starter.controllers',[])
     }
 
     $scope.doRefresh = function(){
-        Tweets.showHomeTimeline().then(function(data){
+        Tweets.showHomeTimeline(param).then(function(data){
             $scope.home_timeline = data;
         });
         $scope.$broadcast('scroll.refreshComplete');
@@ -38,16 +38,27 @@ angular.module('starter.controllers',[])
 
     $scope.submitTweet = function(message){
         Tweets.submitTweet(message).then(function(result){
-            Tweets.showHomeTimeline().then(function(data){
+            Tweets.showHomeTimeline(param).then(function(data){
                 $scope.home_timeline = data;
                 $scope.tweet = {};
             });
         });
     };
 
-    $scope.loadMore = function(){
+    var pageSize = 15 ;
 
+    var param = {
+      "count" : pageSize
     }
+
+    $scope.loadMore = function(){
+      param.count = param.count + 15;
+      $scope.doRefresh;
+    };
+
+    $scope.isMoreData = function(){
+
+    };
 })
 .controller('settingCtrl',function($scope,$rootScope){
         $scope.loadImage = {text:"Load image only wifi", checked:true};
