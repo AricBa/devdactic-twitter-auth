@@ -13,7 +13,7 @@ angular.module('starter.controllers',[])
         }
         Tweets.showHomeTimeline(param).then(function(data){
             $scope.home_timeline = data;
-            alert(data.length);
+            alert(typeof data);
         });
         Tweets.getUserTimeline().then(function(data){
           $rootScope.user = data;
@@ -30,10 +30,10 @@ angular.module('starter.controllers',[])
 
     $scope.doRefresh = function(){
         Tweets.showHomeTimeline(param).then(function(data){
-            $scope.home_timeline = data;
+          $scope.home_timeline = data;
+          $scope.$broadcast('scroll.refreshComplete');
+          $scope.tweet = {};
         });
-        $scope.$broadcast('scroll.refreshComplete');
-        $scope.tweet = {};
     };
 
     $scope.submitTweet = function(message){
@@ -45,22 +45,14 @@ angular.module('starter.controllers',[])
         });
     };
 
-    var pageSize = 15 ;
+    var pageSize = 5 ;
 
     var param = {
       "count" : pageSize
     }
 
-    $scope.loadMore = function(){
-      param.count = param.count + 15;
-      $scope.doRefresh;
-    };
-
-    $scope.isMoreData = function(){
-
-    };
 })
-.controller('settingCtrl',function($scope,$rootScope){
+.controller('settingCtrl',function($scope){
         $scope.loadImage = {text:"Load image only wifi", checked:true};
     })
 .controller('LogoutCtrl',function($scope,$rootScope,$ionicActionSheet,$cordovaOauth,clientId, clientSecret,twitterKey,$twitterApi){
