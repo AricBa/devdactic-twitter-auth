@@ -13,7 +13,6 @@ angular.module('starter.controllers',[])
         }
         Tweets.showHomeTimeline(param).then(function(data){
             $scope.home_timeline = data;
-            alert(typeof data);
         });
         Tweets.getUserTimeline().then(function(data){
           $rootScope.user = data;
@@ -49,7 +48,16 @@ angular.module('starter.controllers',[])
 
     var param = {
       "count" : pageSize
-    }
+    };
+
+    $scope.loadMoreData = function(){
+      param.count = param.count + 5;
+      Tweets.showHomeTimeline(param).then(function(data){
+        $scope.home_timeline = {};
+        Array.prototype.push.apply($scope.home_timeline,data);
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+      });
+    };
 
 })
 .controller('settingCtrl',function($scope){
