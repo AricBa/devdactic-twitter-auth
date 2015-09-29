@@ -45,9 +45,11 @@ angular.module('starter.controllers',[])
     };
 
     var pageSize = 5 ;
+    var maxId = 648735763463475200
 
     var param = {
-      "count" : pageSize
+      "count" : pageSize,
+      "max_id" : maxId
     };
 
     $scope.loadMoreData = function(){
@@ -122,7 +124,4 @@ angular.module('starter.controllers',[])
     $scope.$on('popover.removed',function(){
 
     });
-    $scope.goOtherUser = function(id){
-      $state.go('tabs.detail',{"key":id});
-    };
   });
