@@ -127,4 +127,28 @@ angular.module('starter.controllers',[])
     $scope.$on('popover.removed',function(){
 
     });
-  });
+  })
+.controller('detailCtrl',function($scope,searchKey,Tweets,$cordovaSocialSharing){
+        var param = {
+            "count" : 1,
+            "max_id" : searchKey.key
+        };
+
+        // Display the correct date from Twitter response
+        $scope.correctTimestring = function(string) {
+            return new Date(Date.parse(string));
+        };
+
+        Tweets.showHomeTimeline(param).then(function(data){
+            $scope.tweet = data;
+        });
+
+        $scope.share = function(){
+            $cordovaSocialSharing.share($scope.tweet[0].text).then(function(result){
+                alert("share success");
+            },function(err){
+
+            })
+        };
+
+    });

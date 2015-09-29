@@ -19,22 +19,19 @@
                     Tweet
                 </button>
             </div>
-
-          <div class="subtitle" ng-controller="filterPopoverCtrl" >
+        </div>
+        <div class="subtitle" ng-controller="filterPopoverCtrl" >
             <button ng-click="openPopover($event)"
                     class=" button-clear ">filter
             </button>
-          </div>
-
         </div>
         <ion-refresher on-refresh="doRefresh()"></ion-refresher>
 
         <div ng-show="home_timeline.length == 0">Loading tweets...</div>
 
-        <div ng-repeat="entry in home_timeline" class="list card">
+        <div ng-repeat="entry in home_timeline" class="list card" ui-sref="detail({key:entry.id})">
             <div class="item item-avatar">
                 <img ng-src="{{entry.user.profile_image_url}}"/>
-              <h5>{{entry.id}}</h5>
                 <h2>{{entry.user.name}}</h2>
                 <p>{{correctTimestring(entry.created_at) | date:'medium'}}</p>
             </div>

@@ -1,0 +1,28 @@
+<ion-view>
+    <ion-nav-buttons side="left">
+        <button ng-click="$root.goBack()"
+                class=" button-icon button-clear nav-left-button ion-android-arrow-back"></button>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        detail
+    </ion-nav-title>
+    <ion-content>
+        <div class="list card" >
+            <div class="item item-avatar">
+                <img ng-src="{{tweet[0].user.profile_image_url}}"/>
+                <h2>{{tweet[0].user.name}}</h2>
+                <p>{{correctTimestring(tweet[0].created_at) | date:'medium'}}</p>
+            </div>
+
+            <div class="item item-body">
+                <p ng-bind-html="tweet[0].text"></p>
+                <img ng-if="tweet[0].extended_entities" ng-src="{{ tweet[0].extended_entities.media[0].media_url }}"
+                     style="width: 100%;" onerror="img/faq_loaderror.gif"/>
+            </div>
+
+        </div>
+        <ion-item>
+            <a ng-click="share()"><i class="icon ion-share"    style="font-size:20px;"></i>Share</a>
+        </ion-item>
+    </ion-content>
+</ion-view>

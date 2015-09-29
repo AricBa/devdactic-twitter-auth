@@ -72,6 +72,16 @@ angular.module('starter', ['starter.controllers','starter.services','ionic', 'ng
             resolve: {
 
             }
+          })
+          .state('detail',{
+            url:'/detail/:key',
+            templateUrl: 'templates/details.html',
+            controller:'detailCtrl',
+            resolve:{
+                searchKey:function($stateParams){
+                  return {key: $stateParams.key};
+                }
+            }
           });
       $urlRouterProvider.otherwise('/home');
     });
