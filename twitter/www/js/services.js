@@ -17,7 +17,11 @@ angular.module('starter.services',[])
       },
 
       getUserTimeline : function(){
-        return $twitterApi.getUserTimeline()
+        return $twitterApi.getUserTimeline();
+      },
+
+      searchTweets : function(a,b){
+          return $twitterApi.searchTweets(a,b);
       }
     };
 

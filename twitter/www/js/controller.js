@@ -45,11 +45,12 @@ angular.module('starter.controllers',[])
     };
 
     var pageSize = 5 ;
-    var maxId = 648735763463475200
+    //var maxId = 648735763463475200
 
     var param = {
-      "count" : pageSize,
-      "max_id" : maxId
+      "count" : pageSize
+        //,
+      //"max_id" : maxId
     };
 
     $scope.loadMoreData = function(){
@@ -101,6 +102,8 @@ angular.module('starter.controllers',[])
 
 })
 .controller('filterPopoverCtrl',function($scope,$ionicPopover){
+
+
     $ionicPopover.fromTemplateUrl('templates/popover.html',{
       scope:$scope
     }).then(function(popover){
