@@ -97,4 +97,32 @@ angular.module('starter.controllers',[])
         });
     }
 
-});
+})
+.controller('filterPopoverCtrl',function($scope,$ionicPopover){
+    $ionicPopover.fromTemplateUrl('templates/popover.html',{
+      scope:$scope
+    }).then(function(popover){
+      $scope.popover = popover;
+    });
+
+    $scope.openPopover = function($event){
+      $scope.popover.show($event);
+    };
+    $scope.closePopover = function(){
+      $scope.popover.hide();
+    };
+    $scope.$on('$destroy',function(){
+      if(typeof $scope.popover !== "undefined"){
+        $scope.popover.remove();
+      }
+    });
+    $scope.$on('popover.hide',function(){
+
+    });
+    $scope.$on('popover.removed',function(){
+
+    });
+    $scope.goOtherUser = function(id){
+      $state.go('tabs.detail',{"key":id});
+    };
+  });
