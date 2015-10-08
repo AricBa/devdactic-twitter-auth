@@ -13,12 +13,15 @@
 
             <div class="item item-input-inset">
                 <label class="item-input-wrapper">
+                    <img ng-src="{{user[0].user.profile_image_url}}"/>
                     <input type="text" placeholder="What's happening?" ng-model="tweet.message" ng-maxlength="140">
                 </label>
-                <button class="button button-small" ng-click="submitTweet(tweet.message)">
+              <input type="submit" value="SubmitPhoto" ng-click="makePhoto()"/>
+              <button class="button button-small" ng-click="submitTweet(tweet.message)">
                     Tweet
                 </button>
             </div>
+            <img id="myImage" src=""/>
         </div>
         <div class="subtitle" ng-controller="filterPopoverCtrl" >
             <button ng-click="openPopover($event)"

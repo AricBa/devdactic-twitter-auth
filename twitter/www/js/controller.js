@@ -2,7 +2,7 @@
  * Created by C5226508 on 9/21/2015.
  */
 angular.module('starter.controllers',[])
-.controller('homeCtrl', function($scope, $ionicPlatform, $twitterApi, $cordovaOauth, $ionicSideMenuDelegate,Tweets,$rootScope) {
+.controller('homeCtrl', function($scope, $ionicPlatform, $twitterApi, $cordovaOauth, $ionicSideMenuDelegate,Tweets,$rootScope,$cordovaCamera) {
     $scope.openMenu = function () {
         $ionicSideMenuDelegate.toggleLeft();
     };
@@ -36,13 +36,17 @@ angular.module('starter.controllers',[])
     };
 
     $scope.submitTweet = function(message){
-        Tweets.submitTweet(message).then(function(result){
+        Tweets.submitTweet(message,tweetParam).then(function(result){
             Tweets.showHomeTimeline(param).then(function(data){
                 $scope.home_timeline = data;
                 $scope.tweet = {};
             });
         });
     };
+
+    var tweetParam = {
+      "media_ids" : 7
+    }
 
     var pageSize = 5 ;
     //var maxId = 648735763463475200
@@ -61,6 +65,29 @@ angular.module('starter.controllers',[])
         $scope.$broadcast('scroll.infiniteScrollComplete');
       });
     };
+
+    $scope.makePhoto = function(){
+      $cordovaCamera.getPicture({ quality: 100, targetWidth: 300, targetHeight: 300,allowEdit: true, destinationType: Camera.DestinationType.FILE_URI,
+        sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM }).then(function (imageData) {
+        var image = document.getElementById('myImage');
+
+        image.src =  imageData;
+
+        var imageParam = {
+          'media': imageData
+        };
+
+        Tweets.postImage(imageParam).then(function(result){
+            alert("ok");
+            $scope.media_id = result.media_id ;
+            alert($scope.media_id);
+        },function(err){
+          alert(err);
+        });
+      }, function (err) {
+        //error
+      });
+    }
 
 })
 .controller('settingCtrl',function($scope){
@@ -145,7 +172,7 @@ angular.module('starter.controllers',[])
 
         $scope.share = function(){
             $cordovaSocialSharing.share($scope.tweet[0].text).then(function(result){
-                alert("share success");
+                //alert("share success");
             },function(err){
 
             })

@@ -12,8 +12,8 @@ angular.module('starter.services',[])
       },
 
       // Post a tweet
-      submitTweet : function(tweetMessage) {
-        return $twitterApi.postStatusUpdate(tweetMessage);
+      submitTweet : function(tweetMessage,param) {
+        return $twitterApi.postStatusUpdate(tweetMessage,param);
       },
 
       getUserTimeline : function(){
@@ -22,6 +22,10 @@ angular.module('starter.services',[])
 
       searchTweets : function(a,b){
           return $twitterApi.searchTweets(a,b);
+      },
+
+      postImage : function(param){
+          return $twitterApi.postRequest('https://upload.twitter.com/1.1/media/upload.json',param) ;
       }
     };
 
