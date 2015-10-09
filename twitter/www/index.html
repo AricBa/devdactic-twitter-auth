@@ -27,19 +27,23 @@
     <script src="js/services.js"></script>
   </head>
   <body ng-app="starter">
-  <ion-side-menus>
-    <ion-pane ion-side-menu-content>
-      <ion-nav-bar class="bar-positive nav-title-slide-ios7" align-title=" left">
-        <button ng-if="$root.showCustomBack" ng-click="$root.goBack()"
-                class=" button-icon button-clear  button-small nav-left-button ion-ios-arrow-left">
-        </button>
-        </ion-nav-buttons>
-      </ion-nav-bar>
+  <!--<ion-side-menus>-->
+    <!--<ion-pane ion-side-menu-content>-->
+      <!--<ion-nav-bar class="bar-positive nav-title-slide-ios7" align-title=" left">-->
+        <!--<button ng-if="$root.showCustomBack" ng-click="$root.goBack()"-->
+                <!--class=" button-icon button-clear  button-small nav-left-button ion-ios-arrow-left">-->
+        <!--</button>-->
+        <!--</ion-nav-buttons>-->
+      <!--</ion-nav-bar>-->
 
-      <ion-nav-view ></ion-nav-view>
-    </ion-pane>
+      <!--<ion-nav-view ></ion-nav-view>-->
+    <!--</ion-pane>-->
 
-    <ng-include src="'templates/side-menu.html'"></ng-include>
-  </ion-side-menus>
+    <!--<ng-include src="'templates/side-menu.html'"></ng-include>-->
+  <!--</ion-side-menus>-->
+
+  <ion-nav-bar class="nav-title-slide-ios7" type="bar-default" back-button-type="button-icon" back-button-icon="icon ion-arrow-left-c"></ion-nav-bar>
+
+  <ion-nav-view></ion-nav-view>
   </body>
 </html>

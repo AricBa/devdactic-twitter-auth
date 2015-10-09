@@ -83,12 +83,12 @@ angular.module('starter', ['starter.controllers','starter.services','ionic', 'ng
                   return {key: $stateParams.key};
                 }
             }
+          })
+          .state('info',{
+            url:'/',
+            templateUrl: 'templates/info.html',
+            controller: 'infoCtrl'
           });
-          //.state('info',{
-          //  url:'/',
-          //  templateUrl: 'templates/info.html',
-          //  controller: 'infoCtrl'
-          //});
-      $urlRouterProvider.otherwise('/home');
+      $urlRouterProvider.otherwise('/');
     });
 
