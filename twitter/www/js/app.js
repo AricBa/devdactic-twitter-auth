@@ -84,6 +84,11 @@ angular.module('starter', ['starter.controllers','starter.services','ionic', 'ng
                 }
             }
           });
+          //.state('info',{
+          //  url:'/',
+          //  templateUrl: 'templates/info.html',
+          //  controller: 'infoCtrl'
+          //});
       $urlRouterProvider.otherwise('/home');
     });
 
