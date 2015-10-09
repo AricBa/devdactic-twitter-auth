@@ -1,8 +1,9 @@
 /**
  * Created by C5226508 on 9/21/2015.
  */
-angular.module('starter.controllers',[])
-.controller('homeCtrl', function($scope, $ionicPlatform, $twitterApi, $cordovaOauth, $ionicSideMenuDelegate,Tweets,$rootScope,$cordovaCamera) {
+angular.module('starter.controllers',['base64'])
+.controller('homeCtrl', function($scope, $ionicPlatform, $twitterApi, $cordovaOauth,
+                                 $ionicSideMenuDelegate,Tweets,$rootScope,$cordovaCamera,$http) {
     $scope.openMenu = function () {
         $ionicSideMenuDelegate.toggleLeft();
     };
@@ -66,28 +67,75 @@ angular.module('starter.controllers',[])
       });
     };
 
-    $scope.makePhoto = function(){
-      $cordovaCamera.getPicture({ quality: 100, targetWidth: 300, targetHeight: 300,allowEdit: true, destinationType: Camera.DestinationType.FILE_URI,
-        sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM }).then(function (imageData) {
-        var image = document.getElementById('myImage');
+    //$scope.makePhoto = function(){
+    //  $cordovaCamera.getPicture({ quality: 100, targetWidth: 300, targetHeight: 300,allowEdit: true, destinationType: Camera.DestinationType.FILE_URI,
+    //    sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM }).then(function (imageData) {
+    //    var image = document.getElementById('myImage');
+    //
+    //    image.src =  imageData;
+    //
+    //    $http.get(imageData).success(function(data){
+    //      alert(imageData);
+    //      alert(data);
+    //      //var fileReader = new FileReader();
+    //
+    //      //alert(fileReader.readAsBinaryString(data));
+    //
+    //      var imageParam = {
+    //          media_data: encodeBase64(data)
+    //        };
+    //
+    //      Tweets.postImage(imageParam).then(function(result){
+    //          alert("ok");
+    //          //$scope.media_id = result.media_id ;
+    //          //alert($scope.media_id);
+    //        },function(err){
+    //          alert("error" + err);
+    //        });
+    //    })
+    //    .error(function(err){
+    //
+    //    })
+    //  }, function (err) {
+    //    //error
+    //  });
+    //}
 
-        image.src =  imageData;
+    $scope.photo = {};
+    $scope.file_changed = function(element) {
 
-        var imageParam = {
-          'media': imageData
-        };
+      $scope.$apply(function(scope) {
+        var photofile = element.files[0];
+        //var reader = new FileReader();
 
-        Tweets.postImage(imageParam).then(function(result){
+        //reader.readAsDataURL(photofile);
+        //reader.onload = function(e){
+        //      var image = document.getElementById('myImage')
+        //  alert(e.target.result);
+        //      image.src = e.target.result;
+        //}
+        //reader.readAsBinaryString(photofile);
+
+        //reader.onload = function(e) {
+        //  alert("load");
+        //  alert(e.target.result);
+
+         alert($scope.photo.filename);
+          var imageParam = {
+            media_data: $scope.photo
+          };
+
+          Tweets.postImage(imageParam).then(function(result){
             alert("ok");
-            $scope.media_id = result.media_id ;
-            alert($scope.media_id);
-        },function(err){
-          alert(err);
-        });
-      }, function (err) {
-        //error
+            //$scope.media_id = result.media_id ;
+            //alert($scope.media_id);
+          },function(err){
+            alert("error" + err);
+          });
+        //};
+
       });
-    }
+    };
 
 })
 .controller('settingCtrl',function($scope){

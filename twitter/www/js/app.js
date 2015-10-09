@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['starter.controllers','starter.services','ionic', 'ngCordova', 'ngTwitter',])
+angular.module('starter', ['starter.controllers','starter.services','ionic', 'ngCordova', 'ngTwitter'])
 
   .run(function($ionicPlatform, $rootScope,twitterKey,$cordovaOauth,clientId,clientSecret,$twitterApi) {
     $ionicPlatform.ready(function() {
@@ -58,6 +58,7 @@ angular.module('starter', ['starter.controllers','starter.services','ionic', 'ng
     .constant('twitterKey','STORAGE.TWITTER.KEY')
     .constant('clientId','2aG7aEmM2358Dac0dQMbZnptI')
     .constant('clientSecret','GdqNP5fR2FM17SOXUGRz69l1u4i2XYrgSfgsW5AvhPYGUFYCkr')
+    .constant('uploadMedia','https://upload.twitter.com/1.1/media/upload.json')
     .config(function($urlRouterProvider, $stateProvider){
       $stateProvider
           .state('home',{

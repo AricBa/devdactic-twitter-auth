@@ -2,7 +2,7 @@
  * Created by C5226508 on 9/21/2015.
  */
 angular.module('starter.services',[])
-.factory('Tweets',function($twitterApi){
+.factory('Tweets',function($twitterApi,uploadMedia){
 
 
     var Tweets = {
@@ -25,7 +25,7 @@ angular.module('starter.services',[])
       },
 
       postImage : function(param){
-          return $twitterApi.postRequest('https://upload.twitter.com/1.1/media/upload.json',param) ;
+          return $twitterApi.postRequest(uploadMedia,param) ;
       }
     };
 
