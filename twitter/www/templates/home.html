@@ -11,20 +11,20 @@
     <ion-content class="has-header padding">
         <div class="list">
 
-            <!--<div class="item item-input-inset">-->
-                <!--<label class="item-input-wrapper">-->
-                    <!--<img ng-src="{{user[0].user.profile_image_url}}"/>-->
-                    <!--<input type="text" placeholder="What's happening?" ng-model="tweet.message" ng-maxlength="140">-->
-                <!--</label>-->
+            <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <img ng-src="{{user[0].user.profile_image_url}}"/>
+                    <input type="text" placeholder="What's happening?" ng-model="tweet.message" ng-maxlength="140">
+                </label>
               <!--<input type="submit" value="SubmitPhoto" ng-click="makePhoto()"/>-->
-              <input ng-model="photo"
-                     onchange="angular.element(this).scope().file_changed(this)"
-                     type="file" accept="image/*" />
+              <!--<input ng-model="photo"-->
+                     <!--onchange="angular.element(this).scope().file_changed(this)"-->
+                     <!--type="file" accept="image/*" />-->
               <button class="button button-small" ng-click="submitTweet(tweet.message)">
                     Tweet
                 </button>
             </div>
-            <img id="myImage" src=""/>
+            <!--<img id="myImage" src=""/>-->
         </div>
         <div class="subtitle" ng-controller="filterPopoverCtrl" >
             <button ng-click="openPopover($event)"

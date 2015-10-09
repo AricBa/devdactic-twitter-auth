@@ -12,8 +12,8 @@ angular.module('starter.services',[])
       },
 
       // Post a tweet
-      submitTweet : function(tweetMessage,param) {
-        return $twitterApi.postStatusUpdate(tweetMessage,param);
+      submitTweet : function(tweetMessage) {
+        return $twitterApi.postStatusUpdate(tweetMessage);
       },
 
       getUserTimeline : function(){

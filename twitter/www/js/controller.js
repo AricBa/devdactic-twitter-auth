@@ -37,7 +37,7 @@ angular.module('starter.controllers',['base64'])
     };
 
     $scope.submitTweet = function(message){
-        Tweets.submitTweet(message,tweetParam).then(function(result){
+        Tweets.submitTweet(message).then(function(result){
             Tweets.showHomeTimeline(param).then(function(data){
                 $scope.home_timeline = data;
                 $scope.tweet = {};
@@ -46,7 +46,7 @@ angular.module('starter.controllers',['base64'])
     };
 
     var tweetParam = {
-      "media_ids" : 7
+      media_ids : ''
     }
 
     var pageSize = 5 ;
@@ -74,15 +74,17 @@ angular.module('starter.controllers',['base64'])
     //
     //    image.src =  imageData;
     //
-    //    $http.get(imageData).success(function(data){
-    //      alert(imageData);
-    //      alert(data);
-    //      //var fileReader = new FileReader();
     //
-    //      //alert(fileReader.readAsBinaryString(data));
     //
+    //    //$http.get(imageData).success(function(data){
+    //    //  alert(imageData);
+    //    //  alert(data);
+    //    //  //var fileReader = new FileReader();
+    //    //
+    //    //  //alert(fileReader.readAsBinaryString(data));
+    //    //
     //      var imageParam = {
-    //          media_data: encodeBase64(data)
+    //          media_data:''
     //        };
     //
     //      Tweets.postImage(imageParam).then(function(result){
@@ -92,50 +94,40 @@ angular.module('starter.controllers',['base64'])
     //        },function(err){
     //          alert("error" + err);
     //        });
-    //    })
-    //    .error(function(err){
-    //
-    //    })
+    //    //})
+    //    //.error(function(err){
+    //    //
+    //    //})
     //  }, function (err) {
     //    //error
     //  });
     //}
 
-    $scope.photo = {};
-    $scope.file_changed = function(element) {
-
-      $scope.$apply(function(scope) {
-        var photofile = element.files[0];
-        //var reader = new FileReader();
-
-        //reader.readAsDataURL(photofile);
-        //reader.onload = function(e){
-        //      var image = document.getElementById('myImage')
-        //  alert(e.target.result);
-        //      image.src = e.target.result;
-        //}
-        //reader.readAsBinaryString(photofile);
-
-        //reader.onload = function(e) {
-        //  alert("load");
-        //  alert(e.target.result);
-
-         alert($scope.photo.filename);
-          var imageParam = {
-            media_data: $scope.photo
-          };
-
-          Tweets.postImage(imageParam).then(function(result){
-            alert("ok");
-            //$scope.media_id = result.media_id ;
-            //alert($scope.media_id);
-          },function(err){
-            alert("error" + err);
-          });
-        //};
-
-      });
-    };
+    //$scope.photo = {};
+    //$scope.file_changed = function(element) {
+    //
+    //  $scope.$apply(function(scope) {
+    //    var photofile = element.files[0];
+    //    //var reader = new FileReader();
+    //
+    //    //reader.readAsDataURL(photofile);
+    //    //reader.onload = function(e){
+    //    //reader.readAsBinaryString(photofile);
+    //
+    //  var imageParam = {
+    //    media_data: $scope.photo
+    //  };
+    //
+    //  Tweets.postImage(imageParam).then(function(result){
+    //    alert("ok");
+    //    //$scope.media_id = result.media_id ;
+    //    //alert($scope.media_id);
+    //  },function(err){
+    //    alert("error" + err);
+    //  });
+    //
+    //  });
+    //};
 
 })
 .controller('settingCtrl',function($scope){
