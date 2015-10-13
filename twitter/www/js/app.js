@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['starter.controllers','starter.services','ionic', 'ngCordova', 'ngTwitter'])
 
-  .run(function($ionicPlatform, $rootScope,twitterKey,$cordovaOauth,clientId,clientSecret,$twitterApi) {
+  .run(function($ionicPlatform, $rootScope,twitterKey,$cordovaOauth,clientId,clientSecret,$twitterApi,$ionicAnalytics) {
     $ionicPlatform.ready(function() {
 
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -19,6 +19,8 @@ angular.module('starter', ['starter.controllers','starter.services','ionic', 'ng
 
       $rootScope.myToken = '';
       $rootScope.action = false ;
+
+      $ionicAnalytics.register();
 
     });
 
@@ -83,12 +85,12 @@ angular.module('starter', ['starter.controllers','starter.services','ionic', 'ng
                   return {key: $stateParams.key};
                 }
             }
-          })
-          .state('info',{
-            url:'/',
-            templateUrl: 'templates/info.html',
-            controller: 'infoCtrl'
           });
-      $urlRouterProvider.otherwise('/');
+          //.state('info',{
+          //  url:'/',
+          //  templateUrl: 'templates/info.html',
+          //  controller: 'infoCtrl'
+          //});
+      $urlRouterProvider.otherwise('/home');
     });
 

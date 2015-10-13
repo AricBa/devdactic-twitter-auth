@@ -16,7 +16,7 @@
                     <img ng-src="{{user[0].user.profile_image_url}}"/>
                     <input type="text" placeholder="What's happening?" ng-model="tweet.message" ng-maxlength="140">
                 </label>
-              <!--<input type="submit" value="SubmitPhoto" ng-click="makePhoto()"/>-->
+              <input type="submit" value="SubmitPhoto" ng-click="makePhoto()"/>
               <!--<input ng-model="photo"-->
                      <!--onchange="angular.element(this).scope().file_changed(this)"-->
                      <!--type="file" accept="image/*" />-->
@@ -24,7 +24,7 @@
                     Tweet
                 </button>
             </div>
-            <!--<img id="myImage" src=""/>-->
+            <img id="myImage" src=""/>
         </div>
         <div class="subtitle" ng-controller="filterPopoverCtrl" >
             <button ng-click="openPopover($event)"

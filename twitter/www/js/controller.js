@@ -84,7 +84,7 @@ angular.module('starter.controllers',['base64'])
         //  //alert(fileReader.readAsBinaryString(data));
         //
           var imageParam = {
-              media_data:''
+              media:''
             };
 
           Tweets.postImage(imageParam).then(function(result){
