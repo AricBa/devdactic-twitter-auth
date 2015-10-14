@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['starter.controllers','starter.services','ionic', 'ngCordova', 'ngTwitter'])
 
-  .run(function($ionicPlatform, $rootScope,twitterKey,$cordovaOauth,clientId,clientSecret,$twitterApi,$ionicAnalytics) {
+  .run(function($ionicPlatform, $rootScope,twitterKey,$cordovaOauth,clientId,clientSecret,$twitterApi) {
     $ionicPlatform.ready(function() {
 
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -19,8 +19,6 @@ angular.module('starter', ['starter.controllers','starter.services','ionic', 'ng
 
       $rootScope.myToken = '';
       $rootScope.action = false ;
-
-      $ionicAnalytics.register();
 
     });
 

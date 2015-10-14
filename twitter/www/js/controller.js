@@ -72,7 +72,7 @@ angular.module('starter.controllers',['base64'])
         sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM }).then(function (imageData) {
         var image = document.getElementById('myImage');
 
-        image.src =  imageData;
+        image.src =  "img/ionic.png";
 
 
 
@@ -84,7 +84,7 @@ angular.module('starter.controllers',['base64'])
         //  //alert(fileReader.readAsBinaryString(data));
         //
           var imageParam = {
-              media:''
+              media:"img/ionic.png"
             };
 
           Tweets.postImage(imageParam).then(function(result){

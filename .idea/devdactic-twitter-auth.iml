@@ -2,6 +2,9 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/twitter/node_modules/ionic/node_modules/ionic-app-lib/node_modules/ionic-cordova-lib/src/platforms" />
+      <excludeFolder url="file://$MODULE_DIR$/twitter/node_modules/ionic/node_modules/ionic-app-lib/node_modules/ionic-cordova-lib/src/plugman/platforms" />
+      <excludeFolder url="file://$MODULE_DIR$/twitter/node_modules/ionic/node_modules/ionic-app-lib/node_modules/ionic-cordova-lib/templates/platforms" />
       <excludeFolder url="file://$MODULE_DIR$/twitter/platforms" />
     </content>
     <orderEntry type="inheritedJdk" />
